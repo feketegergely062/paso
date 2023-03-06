@@ -5,16 +5,17 @@ import java.util.Scanner;
 public class Showpass {
     public void getPasses() throws FileNotFoundException{
         File file = new File("data.txt");
-        Scanner scanner = new Scanner(file);
-        while(scanner.hasNextLine()){
-            String line = scanner.nextLine();
-            String[] lineArray = line.split(":");
-            String using = lineArray[0];
-            String cryptText = lineArray[1];
-            String plainText = getPlainText(cryptText, this.getAppKey());
-            System.out.println(using + ":"+plainText);
+        try (Scanner scanner = new Scanner(file)) {
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] lineArray = line.split(":");
+                String using = lineArray[0];
+                String cryptText = lineArray[1];
+                String plainText = getPlainText(cryptText, this.getAppKey());
+                System.out.println(using + ":"+plainText);
 
-            
+                
+            }
         }
     }
     private String getAppKey(){
