@@ -1,4 +1,1 @@
-TODO: a tárolt jelszót titkosítani kell
-TODO: a jelszavakat meg kell jeleníteni 
-TODO: beállítások propertis fájlba
-TODO: beállítások filba a kulcs
+TODO GUI felulet

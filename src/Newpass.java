@@ -27,14 +27,27 @@ public class Newpass {
         }
     }
     private void tryAppendToFile(String using, String pass) throws IOException {
+       String key = this.getAppKey();
+       System.out.println(key);
+       String cryptText = getCryptedText(pass, key);
     
         FileWriter fileWriter = new FileWriter(
             "data.txt", 
             Charset.forName("utf-8"),
             true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        String line = using + ":" + pass;
+        String line = using + ":" + cryptText;
         printWriter.println(line);
         printWriter.close();
+    }
+    private String getAppKey(){
+        Proper proper = new Proper();
+        String appKey = proper.readProper("AppKey");
+        return appKey;
+    }
+    private String getCryptedText(String plainText,String key ){
+        Crypto crypto = new Crypto();
+        String cryptText = crypto.encrypt(plainText, key);
+        return cryptText;
     }
 }
