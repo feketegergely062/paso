@@ -8,29 +8,29 @@ import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class Proper {
-
-    Properties pro = new Properties();
-
     final String PROP_FILE = "config.properties";
     public String readProper(String key) {
         try {
-            return tyreadProper(key);
+            return tryReadProper(key);
         } catch (IOException e) {
-          String msg = "Hiba! A beállítás beolvasása sikertelen";
-          System.err.println(msg);
-          return msg;
+            String msg = "Hiba! A beállítás beolvaása sikertelen";
+            System.err.println(msg);
+            return msg;
         }
     }
-    public String tyreadProper(String key) 
-    throws 
-    FileNotFoundException,
-     UnsupportedEncodingException,
-     IOException{
-        FileInputStream fis = new FileInputStream("Config.properties");
+    public String tryReadProper(String key) 
+            throws 
+                FileNotFoundException, 
+                UnsupportedEncodingException,
+                IOException {
+
+        FileInputStream fis = new FileInputStream(PROP_FILE);
         InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         Reader reader = new BufferedReader(isr);
+        Properties pro = new Properties();
         pro.load(reader);
-        String result =pro.getProperty(key);
+        String result = pro.getProperty(key);
         return result;
-     }
+    }
+
 }

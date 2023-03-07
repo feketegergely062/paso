@@ -24,9 +24,9 @@ public class MainMenu {
             System.out.print("Választás: ");
             selected = scanner.nextLine();
             if (selected.equals("1")) {
-               Showpass showpass = new Showpass();
-               showpass.getPasses();
-               scanner.nextLine();
+                Showpass showpass = new Showpass();
+                showpass.getPasses();
+                scanner.nextLine();
             }else if (selected.equals("2")) {
                 Newpass newpass = new Newpass();
                 newpass.addNewpass();
